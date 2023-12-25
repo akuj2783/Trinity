@@ -18,9 +18,7 @@ app.post('/inquiry', (req, res) => {
 
 // nodemailer transporter
 const transporter = nodemailer.createTransport({
-  host:process.env.NODEMAILER_HOST,
-  port:process.env.NODEMAILER_PORT,
-  secure:true, 
+service:"gmail", 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS 
