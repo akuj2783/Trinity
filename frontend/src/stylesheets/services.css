@@ -1,0 +1,44 @@
+.services-container {
+    margin: 20px;
+    color: white;
+    padding: 70px;
+  }
+  .services-container h1{
+    font-size: 50px;
+  }
+  .service {
+    margin-bottom: 30px;
+  }
+  
+  .service h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: rgb(121, 227, 215);
+  }
+  
+  .service p {
+    font-size: 22px;
+    color: rgb(238, 228, 214);
+    line-height: 1.6;
+  }
+  
+  /* Responsive styles for mobile screens */
+  @media (max-width: 768px) {
+
+    .services-container {
+        margin: 5px;
+        padding: 20px;
+      }
+
+      .services-container h1{
+        font-size: 35px;
+      }
+    .service h3 {
+      font-size: 20px;
+    }
+  
+    .service p {
+      font-size: 14px;
+    }
+  }
+  

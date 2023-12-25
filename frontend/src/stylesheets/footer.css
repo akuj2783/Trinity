@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  justify-content: space-between; /* Space between left and right content */
+  padding: 0 70px; /* Padding on both sides */
+  background-color: rgba(133, 114, 114, 0.22);
+  margin-top: auto; /* Pushes the footer to the bottom */
+  padding: 30px;
+  color: white;
+  width: 100%; /* Take full width of the viewport */
+}
+
+.footer .left,
+.footer .right {
+  display: block; /* Display left and right content in block */
+  align-items: center; /* Align items vertically */
+}
+
+.footer .left img {
+  width: 80px; /* Adjust image width */
+  height: 80px; /* Adjust image height */
+  margin-right: 10px; /* Add some margin between logo and text */
+  margin-bottom: 30px;
+}
+
+.footer .right p {
+  margin-bottom: 20px;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* Arrange content in a column for smaller screens */
+    padding: 0 20px; /* Adjust padding for smaller screens */
+  }
+
+  .footer .left,
+  .footer .right {
+    margin-bottom: 20px; /* Add space between left and right content */
+  }
+
+  .footer .left img {
+    width: 40px; /* Adjust image width for smaller screens */
+    height: 40px; /* Adjust image height for smaller screens */
+    margin-right: 0; /* Remove margin between logo and text for smaller screens */
+    margin-bottom: 10px; /* Add space between logo and text for smaller screens */
+  }
+}

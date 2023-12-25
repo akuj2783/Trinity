@@ -1,0 +1,47 @@
+/* Default styles for larger screens */
+.container {
+  padding: 70px; /* Add padding for content */
+  color: #ffffff; /* Text color */
+  overflow-x: hidden;
+}
+
+.container h1 {
+  font-size: 60px; /* Heading size */
+  color: #ffffff;
+  margin-bottom: 20px; /* Space below heading */
+}
+
+.container h2 {
+  color: #c2e8de;
+}
+.container h3 {
+  color: #ebd8bd;
+}
+
+.container p {
+  text-align: justify;
+  font-size: 25px; /* Paragraph font size */
+  line-height: 1.6; /* Line height */
+  margin-bottom: 20px; /* Space between paragraphs */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .container h1 {
+    font-size: 35px; /* Decrease heading size for mobile */
+    margin-bottom: 10px; /* Adjust space below heading */
+  }
+
+  .container h2{
+    font-size: 18px;
+  }
+
+  .container p {
+    font-size: 15px; /* Decrease paragraph font size for mobile */
+    margin-bottom: 15px; /* Adjust space between paragraphs */
+  }
+}
