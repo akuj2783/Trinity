@@ -12,7 +12,6 @@ const PORT=process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-// Handle POST request from frontend
 app.post('/inquiry', (req, res) => {
   const { name, mobile, email, subject, message } = req.body;
   console.log(name, mobile);
@@ -29,35 +28,44 @@ app.post('/inquiry', (req, res) => {
     refresh_token: process.env.OAUTH_REFRESH_TOKEN
   });
 
-  const accessToken = oauth2Client.getAccessToken();
+  async function sendMail(){
+    try{
+      const accessToken = await oauth2Client.getAccessToken();
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: process.env.EMAIL_USER,
-      clientId: process.env.OAUTH_CLIENTID,
-      clientSecret: process.env.OAUTH_CLIENT_SECRET,
-      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-      accessToken: accessToken
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          type: 'OAuth2',
+          user: process.env.EMAIL_USER,
+          clientId: process.env.OAUTH_CLIENTID,
+          clientSecret: process.env.OAUTH_CLIENT_SECRET,
+          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+          accessToken: accessToken
+        }
+      });
+
+      // Mail options
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_RECEIVER, 
+        subject: `New Inquiry: ${subject}`,
+        text: `
+          Name: ${name}
+          Mobile: ${mobile}
+          Email: ${email}
+          Message: ${message}
+        `
+      };
+
+      const result = await transporter.sendMail(mailOptions);
+      return result;
+
+    } catch(error) {
+      return error;
     }
-  });
-  
-  // Mail options
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_RECEIVER, 
-    subject: `New Inquiry: ${subject}`,
-    text: `
-      Name: ${name}
-      Mobile: ${mobile}
-      Email: ${email}
-      Message: ${message}
-    `
-  };
-  
-  // Send mail
-  transporter.sendMail(mailOptions)
+  }
+
+  sendMail()
     .then(info => {
       console.log('Email sent: ' + info.response);
       res.status(200).send('Email sent successfully');
@@ -70,4 +78,4 @@ app.post('/inquiry', (req, res) => {
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`);
-})
+});
