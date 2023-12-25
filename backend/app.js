@@ -15,8 +15,6 @@ app.use(cors());
 app.post('/inquiry', (req, res) => {
   const { name, mobile, email, subject, message } = req.body;
   console.log(name,mobile)
-// Import nodemailer
-const nodemailer = require("nodemailer");
 
 // nodemailer transporter
 const transporter = nodemailer.createTransport({
