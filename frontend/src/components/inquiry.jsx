@@ -19,12 +19,12 @@ const InquiryForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const backendURL='https://trinity-backend.onrender.com' || 'http://localhost:5000';
+  // const backendURL='https://trinity-backend.onrender.com' || 'http://localhost:5000';
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      await axios.post(`${backendURL}/inquiry`, formData); // Update URL if necessary
+      await axios.post(`http://localhost:5000/inquiry`, formData); // Update URL if necessary
       setAlertMessage('Your inquiry has been submitted successfully! We will get back to you soon.');
     } catch (error) {
       console.error('Error:', error);
